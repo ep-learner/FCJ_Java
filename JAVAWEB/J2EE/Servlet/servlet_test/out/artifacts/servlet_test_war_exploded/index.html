@@ -1,0 +1,29 @@
+<!--<!DOCTYPE html>-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="servlet1" method="get">
+    <span>servlet1</span><input type="text" name="username"><br>
+    <span>密码</span><input type="password" name="password"><br>
+    <input type="submit" name="submit">
+</form>
+
+<form action="servlet2" method="get">
+    <span>servlet2</span><input type="text" name="username"><br>
+    <span>密码</span><input type="password" name="password"><br>
+    <input type="submit" name="submit">
+</form>
+
+<!--下面设置提交多个参数-->
+<form action="servlet2" method="get">
+    账号 ： <input type="text" name="name"> <br>
+    爱好 ： LOL<input type="checkbox" name="hobits" value="lol">
+    DOTA<input type="checkbox" name="hobits" value="dota"> <br>
+    <input type="submit" value="注册">
+</form>
+
+</body>
+</html>
