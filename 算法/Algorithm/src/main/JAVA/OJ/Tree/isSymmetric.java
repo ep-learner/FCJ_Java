@@ -6,7 +6,7 @@ import java.util.Queue;
 import java.util.Stack;
 
 /**
- * 对称二叉树
+ * 是否为对称二叉树
  */
 class isSymmetric {
     public boolean isSymmetric(TreeNode root){
