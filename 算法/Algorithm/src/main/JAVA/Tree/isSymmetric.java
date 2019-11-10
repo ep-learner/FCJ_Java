@@ -1,9 +1,6 @@
-package OJ.Tree;
+package Tree;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
 
 /**
  * 是否为对称二叉树

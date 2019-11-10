@@ -1,6 +1,5 @@
-package OJ.Stack;
+package Stack;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 
 public class nibolan {

@@ -1,4 +1,4 @@
-package OJ.Tree;
+package Tree;
 
 public class maxDepth {
     public  void recur(TreeNode A,int layer){

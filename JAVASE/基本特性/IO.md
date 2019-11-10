@@ -1,60 +1,157 @@
 # 简介
 
-介绍几种IO方法
+介绍几种常见的IO方法
 
+## File
 
+相关内容见[fileDemo]()
 
-## read
-
-1、多字节读取文件流
-
-简化版本：
-
-读取文件流，但读取完之后没有把内容保存下来
+### 文件创建
 
 ```java
-FileInputStream is = new FileInputStream("Path");
-is.read(new byte[1024]);
+File file = new File("D:/test/test1");
+boolean bool = file.mkdirs();//新建多级目录
 ```
 
-完整读取：
+
+
+### 文件类型:目录/文件
+
+- **file.isDirectory();**
 
 ```java
-FileInputStream is = new FileInputStream("Path");
+boolean ifdir = file.isDirectory();
+System.out.println("是否是目录"+ifdir);
+
+```
+
+- **file.isFile();**
+
+```java
+boolean iffile = file.isFile();
+System.out.println("是否是文件"+iffile);
+```
+
+
+
+
+
+### 文件路径
+
+- 绝对路径    
+- 文件名    
+- 父文件名
+
+```java
+System.out.println("getAbsolutePath:"+file.getAbsolutePath());
+System.out.println("getName:"+file.getName());
+System.out.println("getParentFile"+file.getParentFile().getName());
+```
+
+
+
+### 子文件
+
+特别的，关于目录下的子文件筛选
+
+- **第一种：筛选File数组：**
+
+```java
+File[] files = file.listFiles(new FileFilter() {
+    public boolean accept(File pathname) {
+        return pathname.getName().endsWith(".txt")||pathname.isDirectory();
+    }
+});
+```
+
+过滤器为一**匿名内部类**，实现**接口**`new FileFilter()`,重写`accept`方法
+
+方法的返回值为一个boolean类型的值，即返回值为true则该file加入files数组。所以在return处写**当前文件的文件名或文件类型需要满足的条件**
+
+
+
+- **第二种：筛选字符串数组**
+
+  用途和前面那个是一样的，前面的file可以通过获取父文件，拿到目录名称，所以建议用第一种
+
+```java
+file.list(new FilenameFilter() {
+    public boolean accept(File dir, String name) {
+        System.out.println("dir是目录 test"+dir.getName());
+        System.out.println("name是子文件的名称"+name);
+        return true;
+    }
+});
+```
+
+
+
+## IO
+
+### 1、[打印流]()
+
+Scanner，用法类似于**iterator**
+
+```java
+InputStream is  = System.in;
+
+Scanner scanner = new Scanner(is);
+String next = scanner.next();
+```
+
+
+
+### 2、[文件流]()
+
+- 读
+
+```java
+FileInputStream is = new FileInputStream("/a/b.txt");
 byte[] b = new byte[1024];
-//len获取的是读取的输入流的长度
-//读取的内容会被写入字节数组
-int len = is.read(b);
+int len = is.read(b);//len获取的是读取的输入流的长度
 String str = new String(b, 0, len);
 ```
 
-2、任意类型/长度输入流的读取
+- 写
 
 ```java
-FileInputStream fis = new FileInputStream("Path");
+FileOutputStream fos = new FileOutputStream("D:/output");
+fos.write(bytes);//输入前面从输入流读取的内容
+fos.write("输出到文件D:/output".getBytes());
+```
+
+
+
+### 3、[缓冲流]()
+
+InputStreamReader和OutputStreamWriter核心都是调用IO流的read和write，因为前面文件流的读写委实不是很方便，包装成缓冲流，读写内容整合。
+
+- 读
+
+```java
+FileInputStream fis = new FileInputStream("/input");
 BufferedReader br = new BufferedReader(new InputStreamReader(fis));
-String s = br.readLine();
+String s ;
+while ((s = br.readLine())!=null){
+    System.out.println(s);
+}
 ```
 
-## write
-
-1、多字节流写出
+- 写
 
 ```java
-FileOutputStream fos = new FileOutputStream("out");//写出的文件路径
-fos.write("写出去的内容".getBytes());
+FileOutputStream fos = new FileOutputStream("/output");
+BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
+bw.write("输出这串内容到文件中");
 ```
 
-2、任意类型/长度输出流
 
-这时候就不只是能写出去字节数组了。
 
-```java
-BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("out")));
-bw.write("任意内容");
-```
+
 
 ## Properties
+
+和前面不一样的是，这种方式加载的流会被处理成**键值对**，使用上更加方便。
 
 ### 1、读取文件，通过变量名获取参数值
 
@@ -75,6 +172,11 @@ p.load(new FileInputStream("d:/22233.txt"));
 String name = (String)p.get("name");
 System.out.println(name);
 ```
+
+**核心步骤**
+
+- p.load(fis);
+- String value = p.get("key");
 
 ### 2、释义
 

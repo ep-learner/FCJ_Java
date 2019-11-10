@@ -1,4 +1,4 @@
-package OJ.Tree;
+package Tree;
 
 public class TreeNode {
   int val;

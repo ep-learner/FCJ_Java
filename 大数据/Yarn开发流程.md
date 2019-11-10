@@ -217,7 +217,9 @@ job.setJarByClass(Test_MR.class);
 **hadoop     jar     jar包     jar包里面的主类**
 
 ```sh
-hadoop jar  hadoop_test-1.0-SNAPSHOT.jar   bayes.Train_MR
+hadoop jar  modelPrior-1.0-SNAPSHOT.jar     bayes.modelPrior
+
+hadoop jar  modelPosterior-1.0-SNAPSHOT.jar  bayes.Train_MR
 
 hadoop jar  hadoop_test-1.0-SNAPSHOT.jar   bayes.Test_MR
 
@@ -225,4 +227,73 @@ hadoop jar  hadoop_test-1.0-SNAPSHOT.jar   bayes.Evaluation_MR
 ```
 
 严格来讲一般出错比较多的是windows里面跑yarn，各种踩坑，提交到linux跑就没那么多问题了。如果前面本地调试没问题，这里一般不会出错。
+
+
+
+
+
+# 课程作业
+
+## 启动
+
+hdfs --daemon start namenode
+hdfs --daemon start datanode
+
+start-yarn.sh
+
+## 删除结果文件
+
+hadoop fs -rm  -r /BAYES/NBCorpus/classWordNum   /BAYES/NBCorpus/prior   /BAYES/NBCorpus/train /BAYES/NBCorpus/valid   /BAYES/NBCorpus/classNum-r-00000     /BAYES/NBCorpus/WORD_DITIONARY_SIZE
+
+hadoop fs -rm  -r /BAYES/NBCorpus/file_ct_cp
+
+## 作业的几个问题
+
+WEB监控![1573304828935](C:\Users\49143\AppData\Roaming\Typora\typora-user-images\1573304828935.png)
+
+
+
+运行截图：
+
+running截图
+
+
+
+最后的输出结果
+
+输出日志
+
+
+
+map
+
+每一个文件对应一个map，reducer是人为设置的
+
+
+
+# 补充
+
+## 环境配置
+
+在cd $HADOOP_HOME/etc/hadoop/hadoopp-env.sh中
+
+添加classpath
+
+
+
+## sequencefile
+
+前面出现问题是因为一个文件对应一个mapper这个计算量就很大了，并且浪费内存
+
+
+
+## 多reduce
+
+String能不能是正则表达式
+
+
+
+## bean
+
+自定义类型
 

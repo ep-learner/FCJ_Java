@@ -1,6 +1,4 @@
-package OJ.Tree;
-
-import java.util.ArrayList;
+package Tree;
 
 public class Main_Test {
     public TreeNode prepared_data(){

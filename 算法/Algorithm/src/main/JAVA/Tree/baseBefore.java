@@ -1,4 +1,4 @@
-package OJ.Tree;
+package Tree;
 
 import java.util.Stack;
 
