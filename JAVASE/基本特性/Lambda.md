@@ -37,11 +37,13 @@ myInterface aBlockOfCode = (S)->System.out.println(S);
 
 补充
 
-```
 之前能把{}的前提是只有一行代码；
-所以我们能简化的是那种，只有一个接口函数需要实现的接口，称之为函数式接口；
-JAVA有个注释是专门针对这个的：@FuctionalInterface
-```
+
+- 我们能简化的是那种，接口只有**一个函数**需要实现的接口，称之为函数式接口；
+
+- JAVA有个注释是专门针对这个的：**@FuctionalInterface**
+
+
 
 
 
