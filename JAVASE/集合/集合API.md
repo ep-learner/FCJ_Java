@@ -218,9 +218,8 @@ a.contains("value");
 
 - 有修改需求就用**iterator**
 
-  nextIndex这种方法没有记忆的必要，获取索引又不复杂。
+  nextIndex这种方法没有记忆的必要，获取索引又不复杂
 
-- 
 
 ### LinkedList
 

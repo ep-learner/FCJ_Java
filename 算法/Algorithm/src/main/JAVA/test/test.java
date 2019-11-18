@@ -5,7 +5,7 @@ public class test {
      * 构造函数和成员变量的关系
      */
     static int i1  = 1 ;
-    int i2  = 2 ;
+    protected int i2  = 2 ;
     test(){
         System.out.println("构造函数"+i1);
     }

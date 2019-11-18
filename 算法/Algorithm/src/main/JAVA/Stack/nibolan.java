@@ -2,6 +2,9 @@ package Stack;
 
 import java.util.LinkedList;
 
+/**
+ * 逆波兰表达式
+ */
 public class nibolan {
     public int evalRPN(String[] tokens) {
         if(tokens.length == 1) return Integer.parseInt(tokens[0]);

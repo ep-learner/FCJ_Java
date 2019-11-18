@@ -1,7 +1,9 @@
 package Tree;
 
+import Tree.base.TreeNode;
+
 public class maxDepth {
-    public  void recur(TreeNode A,int layer){
+    public  void recur(TreeNode A, int layer){
         if(A==null) return;
         recur(A.left,layer+1);
         recur(A.right,layer+1);

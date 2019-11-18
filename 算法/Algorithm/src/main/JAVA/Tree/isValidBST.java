@@ -1,7 +1,9 @@
 package Tree;
 
+import Tree.base.TreeNode;
+
 public class isValidBST {
-    public boolean isValidBST(Tree.TreeNode root) {
+    public boolean isValidBST(TreeNode root) {
 
         /**
          * 验证是否为二叉搜索树
@@ -10,7 +12,7 @@ public class isValidBST {
         if(root==null) return true;
         return helper(root,null,null);
     }
-    public boolean helper(Tree.TreeNode root, Integer lower, Integer upper){
+    public boolean helper(TreeNode root, Integer lower, Integer upper){
         if(root==null) return true;
         int val =root.val;
         if(lower!=null&&val<=lower) return false;

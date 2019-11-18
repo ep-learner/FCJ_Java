@@ -1,11 +1,13 @@
 package Tree;
 
+import Tree.base.TreeNode;
+
 import java.util.ArrayList;
 
 /**
  * 是否为对称二叉树
  */
-class isSymmetric {
+ class isSymmetric {
     public boolean isSymmetric(TreeNode root){
         if(root==null) return true;
         ArrayList<TreeNode> arr1 = new ArrayList<>();

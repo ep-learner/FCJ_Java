@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<p id = "demo">段落内容</p>
+	<script type="text/javascript">
+		var fruits,len,i,text;
+		fruits = ["Banana", "Orange"];
+		fruits[3] = "hahaha";//输出结果：["Banana", "Orange", "undefined", "hahaha"]
+		fruits.push("Lemon");//输出结果：["Banana", "Orange", "undefined", "hahaha","Lemon"]
+		len = fruits.length;
+		text = "<ul>"
+		for (i = 0; i < len; i++) {
+			text += "<li>" + fruits[i] + "</li>";
+		}
+		text += "</ul>";
+
+		document.getElementById("demo").innerHTML = text;
+
+	</script>
+</body>
+
+</html>
